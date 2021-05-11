@@ -1,0 +1,44 @@
+<div class="card mt-2" *ngIf="student">
+  <div class="card-header">id: {{ student.id }}</div>
+
+  <div class="card-body">
+    <form #studForm="ngForm">
+      <div class="row">
+        <div class="col-2"><label>last name: </label></div>
+        <div class="col-2">{{ student.lastName }}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-2"><label>first name: </label></div>
+        <div class="col-2">{{ student.firstName }}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-2"><label> gender: </label></div>
+        <div class="col-2">{{ student.gender }}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-2"><label>student id: </label></div>
+        <div class="col-2">{{ student.studentId }}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-2"><label>registration date: </label></div>
+        <div class="col-2">{{ student.registrationDate }}</div>
+      </div>
+
+      <div class="row">
+        <div class="col-2"><label>birth date: </label></div>
+        <div class="col-2">{{ student.birthDate }}</div>
+      </div>
+      <div class="row">
+        <div class="col-2 color"><label class="color">last name: </label></div>
+        <div class="col-2">{{ student.lastName }}</div>
+      </div>
+    </form>
+  </div>
+  <button class="btn btn-warning ml-auto" (click)="students()">
+    Students list
+  </button>
+</div>

@@ -32,15 +32,17 @@ export class StudentsComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.dataSource = new StudentsDataSource(this._studService);
-    this.SearchSub.pipe(debounceTime(500), distinctUntilChanged()).subscribe(
+    this.SearchSub1.pipe(debounceTime(500), distinctUntilChanged()).subscribe(
       (res) => {
         this._studService.FilterByName(res).subscribe((d) => {
           this.dataSource.data = d;
-          this.dataSource.disconnect();
-          this.dataSource.connect();
-          this.dataSource.connect().subscribe((d) => {
-            this.dataSource.data = d;
-          });
+        });
+      }
+    );
+    this.SearchSub2.pipe(debounceTime(500), distinctUntilChanged()).subscribe(
+      (res) => {
+        this._studService.FilterById(res).subscribe((d) => {
+          this.dataSource.data = d;
         });
       }
     );
@@ -55,9 +57,14 @@ export class StudentsComponent implements AfterViewInit, OnInit {
     // this.router.navigate(['/student-details', stud.id]);
   }
 
-  SearchSub: Subject<string> = new Subject();
-  Search(str) {
-    this.SearchSub.next(str);
+  SearchSub1: Subject<string> = new Subject();
+  SearchName(str) {
+    this.SearchSub1.next(str);
+  }
+
+  SearchSub2: Subject<string> = new Subject();
+  SearchId(str) {
+    this.SearchSub1.next(str);
   }
 
   ngAfterViewInit(): void {

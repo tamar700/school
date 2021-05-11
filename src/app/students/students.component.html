@@ -2,10 +2,19 @@
 <br />
 <input
   class="form-control"
-  placeholder="search"
+  placeholder="search name"
   type="text"
-  #x
-  (input)="Search(x.value)"
+  #name
+  (input)="Search(name.value)"
+/>
+<br />
+<br />
+<input
+  class="form-control"
+  placeholder="search id"
+  type="text"
+  #id
+  (input)="Search(id.value)"
 />
 <br />
 <br />
